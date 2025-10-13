@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>WebSocket Test</h1>
+    <p>This is a basic websocket client that will subscribe to the amcl_pose topic. Check your console and network tab</p>
+
+    <script>
+        const ws = new WebSocket('ws://localhost:8080');
+        ws.onopen = () => {
+            console.log('WebSocket connection opened');
+            ws.send(JSON.stringify({op: 'subscribe', topic: 'amcl_pose', type: 'PoseWithCovarianceStamped'}));
+        };
+        ws.onmessage = (message) => {
+            console.log('Received message:', message.data);
+        };
+        ws.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+        ws.onclose = () => {
+            console.log('WebSocket connection closed');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+types:
+ idls:
+ - >
+  #include <geometry_msgs/PoseWithCovarianceStamped.idl>
+ paths: [ "./types/" ]
+systems:
+ ws:
+  type: websocket_server
+  port: 80
+  security: none
+  encoding: json
+ dds: { type: fastdds }
+routes:
+ dds_to_ws: { from: dds, to: ws }
+topics:
+ amcl_pose:
+  type: "PoseWithCovarianceStamped"
+  route: dds_to_ws
