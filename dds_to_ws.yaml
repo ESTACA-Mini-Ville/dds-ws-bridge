@@ -1,7 +1,7 @@
 types:
  idls:
  - >
-  #include <geometry_msgs/PoseWithCovarianceStamped.idl>
+  #include <types.idl>
  paths: [ "./types/" ]
 systems:
  ws:
@@ -12,7 +12,11 @@ systems:
  dds: { type: fastdds }
 routes:
  dds_to_ws: { from: dds, to: ws }
+ ws_to_dds: { from: ws, to: dds }
 topics:
  amcl_pose:
   type: "PoseWithCovarianceStamped"
   route: dds_to_ws
+ cmd_vel:
+  type: "Twist"
+  route: ws_to_dds
