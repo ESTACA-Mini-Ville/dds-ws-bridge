@@ -20,3 +20,6 @@ topics:
  cmd_vel:
   type: "Twist"
   route: ws_to_dds
+ destination:
+  type: "Destination"
+  route: ws_to_dds 
