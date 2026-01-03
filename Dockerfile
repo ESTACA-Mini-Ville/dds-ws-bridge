@@ -53,4 +53,4 @@ RUN cd ./is-workspace && \
 
 ENTRYPOINT ["/bin/bash", "-lc", "source ./is-workspace/install/setup.bash; exec /bin/bash"]
 
-EXPOSE 80
+EXPOSE 8080

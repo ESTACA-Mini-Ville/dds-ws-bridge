@@ -6,7 +6,7 @@ types:
 systems:
  ws:
   type: websocket_server
-  port: 80
+  port: 8080
   security: none
   encoding: json
  dds: { type: fastdds }
