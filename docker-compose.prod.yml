@@ -1,0 +1,16 @@
+services:
+  websocket_server:
+    image: dds-ws-bridge
+    build: .
+    container_name: websocket_server
+    network_mode: host
+    environment:
+      - FASTRTPS_DEFAULT_PROFILES_FILE=/root/fastdds_profile.xml
+    #entrypoint: ["tail", "-f", "/dev/null"]
+    entrypoint: ["/bin/bash", "/usr/local/bin/entrypoint.sh"]
+    volumes:
+      - ./fastdds_profile.xml:/root/fastdds_profile.xml:ro
+      - ./entrypoint.sh:/usr/local/bin/entrypoint.sh:ro
+      - ./types:/root/types:ro
+      - ./dds_to_ws.yaml:/root/dds_to_ws.yaml:ro
+    restart: unless-stopped
