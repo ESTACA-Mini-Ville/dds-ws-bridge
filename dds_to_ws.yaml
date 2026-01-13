@@ -23,3 +23,6 @@ topics:
  destination:
   type: "Destination"
   route: ws_to_dds 
+ traffic_lights_status:
+  type: "TrafficLightStatus"
+  route: dds_to_ws
